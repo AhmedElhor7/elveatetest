@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://D%3A/Route%20Full-Stack/Route%20Front-End/Next.js/ElvateTest/elevatetest/src/app/loading.jsx"],"sourcesContent":["import React from 'react'\r\n\r\nexport default function Loading() {\r\n  return (\r\n    <div class=\"flex items-center justify-center min-h-screen\">\r\n      <div\r\n        class=\"animate-spin w-16 h-16 border-[6px] border-blue-600 border-t-transparent rounded-full\"\r\n        role=\"status\"\r\n        aria-label=\"loading\"\r\n      >\r\n        <span class=\"sr-only\">Loading...</span>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;AAAA;;;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAI,OAAM;kBACT,cAAA,8OAAC;YACC,OAAM;YACN,MAAK;YACL,cAAW;sBAEX,cAAA,8OAAC;gBAAK,OAAM;0BAAU;;;;;;;;;;;;;;;;AAI9B"}},
+    {"offset": {"line": 40, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
