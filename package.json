@@ -4,11 +4,12 @@
   "homepage": "https://github.com/AhmedElhor7/elveatetest",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "export": "next build && next export",
-    "start": "next start",
-    "lint": "next lint"
+  "dev": "next dev --turbopack",
+  "build": "next build",
+  "export": "next build && next export",
+  "deploy": "gh-pages -d out",
+  "start": "next start",
+  "lint": "next lint"
   },
   "dependencies": {
     "next": "15.1.6",
