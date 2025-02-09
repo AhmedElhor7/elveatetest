@@ -1,34 +1,22 @@
-import Image from 'next/image';
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 
-export default async  function ProductsDetails({ params }) {
-  console.log(params);
+// Helper function to fetch a single product by ID
+async function getProduct(productId) {
+  const baseUrl = "https://ecommerce.routemisr.com";
+  const response = await fetch(`${baseUrl}/api/v1/products/${productId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch product");
+  }
+  const { data } = await response.json();
+  return data;
+}
 
+export default async function ProductsDetails({ params }) {
   const { productsdetails } = params;
   console.log("Product ID:", productsdetails);
 
-  const baseUrl = "https://ecommerce.routemisr.com";
-  const productsApi = `/api/v1/products/${productsdetails}`;
-
-  async function getProducts() {
-    try {
-      const response = await fetch(`${baseUrl}${productsApi}`);
-      if (!response.ok) throw new Error("Failed to fetch products");
-      const { data } = await response.json();
-      return data;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  }
-
-  const product = await getProducts();
-  console.log(product);
-  console.log("name" + product.title);
-  console.log("description" + product.description);
-  console.log("image" + product.imageCover);
-  console.log("price" + product.price);
-  console.log("Category Name " + product.category.name);
+  const product = await getProduct(productsdetails);
 
   return (
     <div className="container mx-auto p-4">
@@ -62,4 +50,19 @@ export default async  function ProductsDetails({ params }) {
       </div>
     </div>
   );
+}
+
+// Generate static paths for dynamic routes
+export async function generateStaticParams() {
+  const baseUrl = "https://ecommerce.routemisr.com";
+  const response = await fetch(`${baseUrl}/api/v1/products`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch products for static params");
+  }
+  const { data: products } = await response.json();
+
+  // Return an array of objects with the parameter names matching your folder structure
+  return products.map((product) => ({
+    productsdetails: product._id,
+  }));
 }
